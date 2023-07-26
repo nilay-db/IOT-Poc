@@ -6,15 +6,15 @@ from dlt_de_helper import *
 # COMMAND ----------
 
 spark.conf.set(
-    "fs.azure.account.key.shellpoctagnt.dfs.core.windows.net",
-    dbutils.secrets.get(scope="shell-poc-secrets-nt", key="shellpoctagnt_key"))
+    "some Storage account key name",
+    dbutils.secrets.get(scope="some-secrets-scope-name", key="some_key-name"))
 
 spark.conf.set("spark.sql.files.ignoreCorruptFiles", "true")
 
 # COMMAND ----------
 
-dbutils.widgets.text("path", "abfss://tagdata2@shellpoctagnt.dfs.core.windows.net/")
-dbutils.widgets.text("time_gap_thresold", "12.948")
+dbutils.widgets.text("path", "some/storage/account/path")
+dbutils.widgets.text("time_gap_thresold", "12.948")#you ccan configure it
 
 time_gap_thresold = float(dbutils.widgets.get("time_gap_thresold"))
 files_path = dbutils.widgets.get("path")
